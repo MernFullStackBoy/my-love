@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mp file</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 360px) {
+            header {
+                max-width: 360px;
+                height: 100vh;
+                background: url(./images/love.jpg);
+                background-size: cover;
+                position: relative;
+                margin: auto;
+            }
+
+            header::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                left: 0;
+                backdrop-filter: blur(20px) brightness(0.7);
+            }
+
+            section {
+                max-width: 340px;
+                height: 450px;
+                background-color: rgba(0, 0, 0, 0.37);
+                position: relative;
+                z-index: 3;
+                margin: 0 auto;
+                border-radius: 20px;
+                top: 40px;
+                box-shadow: inset 0 0 20px 2px rgba(255, 255, 255, 0.548);
+            }
+
+            .circle {
+                width: 150px;
+                height: 150px;
+                background: url(./images/ezgif.com-resize-16-3.webp);
+                background-size: cover;
+                border-radius: 50%;
+                margin: auto;
+                position: relative;
+                top: 30px;
+                animation-name: circle;
+                animation-duration: 4s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-play-state: paused;
+            }
+
+            @keyframes circle {
+                100% {
+                    transform: rotate(350deg);
+                }
+            }
+
+            h1 {
+                color: white;
+                font-family: cursive;
+                font-size: 30px;
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            h3 {
+                color: white;
+                font-family: cursive;
+                font-size: 20px;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            button {
+                width: 70px;
+                height: 70px;
+                margin-left: 135px;
+                border-radius: 50%;
+                margin-top: 20px;
+                border: none;
+                background-color: rgba(0, 0, 0, 0.404);
+                box-shadow: inset 0 0 10px 2px white;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                transition: 0.1s;
+            }
+
+            button:active {
+                background-color: rgba(0, 0, 0, 0.204);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="./219537335164.m4a"></audio>
+    <header>
+        <section>
+            <div class="circle">
+
+            </div>
+            <h1>Yuragim malikasi</h1>
+            <h3>Kiffoya</h3>
+            <button class="fa-solid fa-play">
+
+            </button>
+        </section>
+    </header>
+    <script>
+        const btn = document.querySelector("button")
+
+        const audio = document.querySelector("audio")
+
+        const circle = document.querySelector('.circle')
+
+        btn.addEventListener('click', () => {
+            if (btn.className == "fa-solid fa-play") {
+                audio.play()
+                btn.classList.toggle("fa-play")
+                btn.classList.toggle("fa-pause")
+                circle.style.animationPlayState = "running"
+            } else if (btn.className == "fa-solid fa-pause") {
+                audio.pause()
+                btn.classList.toggle("fa-play")
+                btn.classList.toggle("fa-pause")
+                circle.style.animationPlayState = "paused"
+            }
+        })
+        audio.addEventListener("ended", () => {
+            circle.style.animationPlayState = "paused"
+            btn.classList.add('fa-play')
+            btn.classList.remove('fa-pause')
+        })
+    </script>
+</body>
+
+</html>
